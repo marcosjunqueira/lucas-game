@@ -78,6 +78,7 @@ func _on_goal_scored(scorer: String) -> void:
 	is_in_round_reset = true
 	SoundManager.play("whistle")
 	SoundManager.play("cheer")
+	get_tree().create_timer(0.1).timeout.connect(func(): SoundManager.play("announcer_goal"))
 	
 	# Freeze the ball physics using deferred properties to avoid physics server errors
 	$Ball.set_deferred("freeze", true)
