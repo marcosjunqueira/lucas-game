@@ -7,11 +7,8 @@
 [ext_resource type="PackedScene" path="res://goal.tscn" id="5_goal_scene"]
 [ext_resource type="Texture2D" uid="uid://d3x6y8w2p8p3o" path="res://assets/trex_siuuu.svg" id="6_trex_texture"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_Floor1"]
-size = Vector2(800, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_Floor2"]
-size = Vector2(1050, 48)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_Floor"]
+size = Vector2(2000, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_Platform1"]
 size = Vector2(200, 24)
@@ -51,31 +48,18 @@ position = Vector2(2010, 324)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 shape = SubResource("RectangleShape2D_Wall")
 
-[node name="Floor1" type="StaticBody2D" parent="."]
-position = Vector2(400, 600)
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(1000, 600)
 
-[node name="ColorRect" type="ColorRect" parent="Floor1"]
-offset_left = -400.0
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_left = -1000.0
 offset_top = -24.0
-offset_right = 400.0
+offset_right = 1000.0
 offset_bottom = 24.0
 color = Color(0.180392, 0.223529, 0.282353, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor1"]
-shape = SubResource("RectangleShape2D_Floor1")
-
-[node name="Floor2" type="StaticBody2D" parent="."]
-position = Vector2(1475, 600)
-
-[node name="ColorRect" type="ColorRect" parent="Floor2"]
-offset_left = -525.0
-offset_top = -24.0
-offset_right = 525.0
-offset_bottom = 24.0
-color = Color(0.180392, 0.223529, 0.282353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
-shape = SubResource("RectangleShape2D_Floor2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_Floor")
 
 [node name="Step1" type="StaticBody2D" parent="."]
 position = Vector2(400, 480)
