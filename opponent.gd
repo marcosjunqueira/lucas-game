@@ -42,6 +42,9 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = move_toward(velocity.x, target_vel_x, SPEED * 6 * delta)
 	move_and_slide()
+	
+	# Clamp opponent position to prevent own-goals or crossing the patrol limit
+	global_position.x = clamp(global_position.x, patrol_left, patrol_right)
 
 	# Apply push back force to the ball on contact to defend the goal
 	for i in get_slide_collision_count():

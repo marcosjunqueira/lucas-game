@@ -26,7 +26,7 @@ script = ExtResource("1_main_script")
 [node name="SpaceBackground" type="ColorRect" parent="."]
 offset_right = 2000.0
 offset_bottom = 648.0
-color = Color(0.0823529, 0.0980392, 0.12549, 1)
+color = Color(0.117647, 0.156863, 0.215686, 1)
 
 [node name="StarsDecoration" type="Line2D" parent="."]
 points = PackedVector2Array(150, 80, 151, 80, 320, 150, 321, 150, 500, 60, 501, 60, 780, 120, 781, 120, 1100, 90, 1101, 90, 1450, 140, 1451, 140, 1720, 70, 1721, 70)
@@ -57,10 +57,22 @@ offset_left = -1000.0
 offset_top = -24.0
 offset_right = 1000.0
 offset_bottom = 24.0
-color = Color(0.180392, 0.223529, 0.282353, 1)
+color = Color(0.180392, 0.478431, 0.25098, 1)
+
+[node name="WhiteLine" type="ColorRect" parent="Floor"]
+offset_left = -1000.0
+offset_top = -24.0
+offset_right = 1000.0
+offset_bottom = -20.0
+color = Color(1, 1, 1, 0.8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_Floor")
+
+[node name="PenaltyAreaLine" type="Line2D" parent="."]
+points = PackedVector2Array(1550, 576, 1550, 460, 1850, 460)
+width = 3.0
+default_color = Color(1, 1, 1, 0.4)
 
 [node name="Step1" type="StaticBody2D" parent="."]
 position = Vector2(400, 480)
