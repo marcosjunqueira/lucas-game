@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://goal.gd" id="1_goal_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
-size = Vector2(60, 80)
+size = Vector2(30, 76)
 
 [node name="Goal" type="Area2D"]
 collision_layer = 0
@@ -31,5 +31,5 @@ width = 4.0
 default_color = Color(1, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(30, 40)
+position = Vector2(43, 40)
 shape = SubResource("RectangleShape2D_1")
