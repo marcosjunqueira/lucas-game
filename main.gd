@@ -77,16 +77,21 @@ func _update_timer_ui() -> void:
 func _on_goal_scored(scorer: String) -> void:
 	is_in_round_reset = true
 	
-	# Move the ball to the center immediately to prevent double detection inside the goal
-	$Ball.global_position = ball_start_pos
+	# Freeze the ball physics using Godot's native freeze property
+	$Ball.freeze = true
 	$Ball.linear_velocity = Vector2.ZERO
 	$Ball.angular_velocity = 0.0
+	$Ball.global_position = ball_start_pos
 	
-	# Freeze physics
+	# Freeze player and opponent
 	$Player.process_mode = Node.PROCESS_MODE_DISABLED
-	$Ball.process_mode = Node.PROCESS_MODE_DISABLED
 	if has_node("Opponent"):
 		$Opponent.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# Determine kickoff possession: ball goes to the side that conceded the goal
+	# CR7 scored -> Dino conceded -> Dino gets kickoff (spawn ball at x = 750)
+	# Dino scored -> CR7 conceded -> CR7 gets kickoff (spawn ball at x = 400)
+	var next_kickoff_pos = Vector2(400, 500) if scorer != "CR7" else Vector2(752, 500)
 	
 	# Show goal banner
 	goal_banner.visible = true
@@ -117,20 +122,21 @@ func _on_goal_scored(scorer: String) -> void:
 	
 	goal_banner.visible = false
 	
-	# Reset positions
+	# Reset player and opponent positions
 	$Player.global_position = player_start_pos
 	$Player.velocity = Vector2.ZERO
-	$Ball.linear_velocity = Vector2.ZERO
-	$Ball.angular_velocity = 0.0
-	$Ball.global_position = ball_start_pos
-	
 	if has_node("Opponent"):
 		$Opponent.global_position = opponent_start_pos
 		$Opponent.velocity = Vector2.ZERO
-		
-	# Unfreeze
+	
+	# Place the ball at the calculated kickoff position and unfreeze it
+	$Ball.global_position = next_kickoff_pos
+	$Ball.linear_velocity = Vector2.ZERO
+	$Ball.angular_velocity = 0.0
+	$Ball.freeze = false
+	
+	# Unfreeze characters
 	$Player.process_mode = Node.PROCESS_MODE_INHERIT
-	$Ball.process_mode = Node.PROCESS_MODE_INHERIT
 	if has_node("Opponent"):
 		$Opponent.process_mode = Node.PROCESS_MODE_INHERIT
 		
