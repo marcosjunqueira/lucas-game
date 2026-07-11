@@ -170,6 +170,69 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.6)
 theme_override_font_sizes/font_size = 14
 text = "Controles: A/D/Setas movem, W/Cima pula, Espaço chuta (Bicicleta)"
 
+[node name="ScoreboardContainer" type="CenterContainer" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/ScoreboardContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/ScoreboardContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/ScoreboardContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScoreboardLabel" type="Label" parent="HUD/ScoreboardContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "CR7 [ 0 - 0 ] DINO"
+
+[node name="VSeparator" type="VSeparator" parent="HUD/ScoreboardContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TimerLabel" type="Label" parent="HUD/ScoreboardContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Time: 01:30"
+
+[node name="GoalBanner" type="CenterContainer" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/GoalBanner"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/GoalBanner/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GoalBannerLabel" type="Label" parent="HUD/GoalBanner/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 32
+text = "GOOOL!!!"
+horizontal_alignment = 1
+
 [node name="WinOverlay" type="CenterContainer" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0

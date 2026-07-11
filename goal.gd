@@ -5,11 +5,10 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
-		# Goal scored! Deactivate further detections
+		# Prevent multiple triggers in same frame
 		set_deferred("monitoring", false)
 		
-		# Check name to determine which side scored
 		if name.to_lower().contains("left"):
-			Global.game_over.emit("Dinosaur")
+			Global.record_goal("Dinosaur")
 		else:
-			Global.game_over.emit("CR7")
+			Global.record_goal("CR7")
