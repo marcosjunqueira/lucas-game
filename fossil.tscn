@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1x6y8w2p8p3m"]
+
+[ext_resource type="Script" path="res://fossil.gd" id="1_fossil_script"]
+[ext_resource type="Texture2D" uid="uid://d3x6y8w2p8p3n" path="res://assets/fossil.svg" id="2_fossil_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[node name="Fossil" type="Area2D"]
+script = ExtResource("1_fossil_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fossil_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

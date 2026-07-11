@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Spiky black hair -->
+  <path d="M16,24 Q20,12 32,10 Q44,12 48,24 Q52,32 48,36 Q32,40 16,36 Q12,32 16,24" fill="#111111"/>
+  <!-- Face/Skin -->
+  <rect x="20" y="20" width="24" height="20" rx="8" fill="#ffd1a9"/>
+  <!-- Eyes -->
+  <circle cx="28" cy="28" r="2" fill="#111111"/>
+  <circle cx="36" cy="28" r="2" fill="#111111"/>
+  <!-- Mouth (Smile) -->
+  <path d="M28,34 Q32,38 36,34" stroke="#c96f53" stroke-width="2" fill="none"/>
+  <!-- Red Jersey -->
+  <path d="M14,40 L50,40 L46,60 L18,60 Z" fill="#e63946"/>
+  <!-- Number 7 (Yellow) -->
+  <path d="M29,45 H35 L31,55" stroke="#ffb703" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

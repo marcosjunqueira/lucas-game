@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- T-Rex Tail -->
+  <path d="M20,100 Q40,95 50,85 Q40,80 20,82 Z" fill="#48bb78"/>
+  <!-- T-Rex Legs (Stretched in Siuuu stance) -->
+  <rect x="50" y="85" width="10" height="25" rx="5" fill="#38a169" transform="rotate(15 50 85)"/>
+  <rect x="68" y="85" width="10" height="25" rx="5" fill="#38a169" transform="rotate(-15 68 85)"/>
+  <!-- T-Rex Body -->
+  <ellipse cx="64" cy="70" rx="20" ry="25" fill="#48bb78"/>
+  <!-- T-Rex Head -->
+  <path d="M50,45 C50,25 90,25 90,40 C90,45 80,50 90,55 C80,60 50,60 50,45 Z" fill="#48bb78"/>
+  <!-- Big Eyes -->
+  <circle cx="75" cy="38" r="4" fill="#ffffff"/>
+  <circle cx="75" cy="38" r="2" fill="#1a202c"/>
+  <!-- Mouth / Teeth -->
+  <path d="M60,50 L85,50" stroke="#1a202c" stroke-width="2" fill="none"/>
+  <polygon points="65,50 67,54 69,50" fill="#ffffff"/>
+  <polygon points="72,50 74,54 76,50" fill="#ffffff"/>
+  <polygon points="79,50 81,54 83,50" fill="#ffffff"/>
+  <!-- Tiny Arms (Siuuu pose: pointing down and back) -->
+  <path d="M48,65 Q35,70 30,80" stroke="#38a169" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M80,65 Q93,70 98,80" stroke="#38a169" stroke-width="6" stroke-linecap="round" fill="none"/>
+</svg>

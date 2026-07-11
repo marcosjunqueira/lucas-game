@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Glowing outline -->
+  <circle cx="16" cy="16" r="14" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.8"/>
+  <!-- Fossil Stone -->
+  <circle cx="16" cy="16" r="11" fill="#8a95a5" stroke="#4a5568" stroke-width="1.5"/>
+  <!-- Dino footprint (three toes + heel) -->
+  <path d="M16,13 L15,19 L11,17 M16,13 L16,20 M16,13 L17,19 L21,17 M15,19 Q16,23 17,19 Z" stroke="#2d3748" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#2d3748"/>
+</svg>

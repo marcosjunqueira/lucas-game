@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1x6y8w2p8p3g"]
+
+[ext_resource type="Script" path="res://goal.gd" id="1_goal_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(60, 80)
+
+[node name="Goal" type="Area2D"]
+script = ExtResource("1_goal_script")
+
+[node name="NetBackground" type="ColorRect" parent="."]
+offset_right = 60.0
+offset_bottom = 80.0
+color = Color(1, 1, 1, 0.15)
+
+[node name="NetLinesHorizontal" type="Line2D" parent="."]
+points = PackedVector2Array(0, 20, 60, 20, 0, 40, 60, 40, 0, 60, 60, 60)
+width = 1.0
+default_color = Color(1, 1, 1, 0.3)
+
+[node name="NetLinesVertical" type="Line2D" parent="."]
+points = PackedVector2Array(20, 0, 20, 80, 40, 0, 40, 80)
+width = 1.0
+default_color = Color(1, 1, 1, 0.3)
+
+[node name="Posts" type="Line2D" parent="."]
+points = PackedVector2Array(0, 80, 0, 0, 60, 0, 60, 80)
+width = 4.0
+default_color = Color(1, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(30, 40)
+shape = SubResource("RectangleShape2D_1")
