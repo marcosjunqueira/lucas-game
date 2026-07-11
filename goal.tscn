@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1x6y8w2p8p3g"]
+[gd_scene load_steps=5 format=3 uid="uid://d1x6y8w2p8p3g"]
 
 [ext_resource type="Script" path="res://goal.gd" id="1_goal_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(30, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_Crossbar"]
+size = Vector2(60, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_BackPost"]
+size = Vector2(4, 80)
 
 [node name="Goal" type="Area2D"]
 collision_layer = 0
@@ -33,3 +39,15 @@ default_color = Color(1, 1, 1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(43, 40)
 shape = SubResource("RectangleShape2D_1")
+
+[node name="SolidPosts" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 3
+
+[node name="Crossbar" type="CollisionShape2D" parent="SolidPosts"]
+position = Vector2(30, 0)
+shape = SubResource("RectangleShape2D_Crossbar")
+
+[node name="BackPost" type="CollisionShape2D" parent="SolidPosts"]
+position = Vector2(60, 40)
+shape = SubResource("RectangleShape2D_BackPost")
