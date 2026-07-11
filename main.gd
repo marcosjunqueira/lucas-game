@@ -35,9 +35,11 @@ func _on_game_won() -> void:
 	win_overlay.visible = true
 	win_label.text = "GOOOOL!!!\nSIUUUUUUU!\n\nYou collected %d of %d fossils!" % [Global.fossils_collected, Global.total_fossils_in_level]
 	
-	# Freeze player and ball so they don't slide or glitch after winning
+	# Freeze player, ball, and opponent so they don't slide or glitch after winning
 	$Player.process_mode = Node.PROCESS_MODE_DISABLED
 	$Ball.process_mode = Node.PROCESS_MODE_DISABLED
+	if has_node("Opponent"):
+		$Opponent.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	# Position T-Rex at the current screen center of the camera
 	var camera_center = Vector2(576, 450)

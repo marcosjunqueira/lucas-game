@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://fossil.tscn" id="4_fossil_scene"]
 [ext_resource type="PackedScene" path="res://goal.tscn" id="5_goal_scene"]
 [ext_resource type="Texture2D" uid="uid://d3x6y8w2p8p3o" path="res://assets/trex_siuuu.svg" id="6_trex_texture"]
+[ext_resource type="PackedScene" path="res://opponent.tscn" id="7_opponent_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_Floor"]
 size = Vector2(2000, 48)
@@ -143,6 +144,9 @@ position = Vector2(1850, 496)
 
 [node name="Player" parent="." instance=ExtResource("2_player_scene")]
 position = Vector2(100, 500)
+
+[node name="Opponent" parent="." instance=ExtResource("7_opponent_scene")]
+position = Vector2(1600, 544)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0

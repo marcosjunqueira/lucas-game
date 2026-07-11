@@ -56,6 +56,16 @@ func _physics_process(delta: float) -> void:
 		kick_ball()
 
 func kick_ball() -> void:
+	# Prevent spamming spins while already spinning
+	if sprite.rotation != 0.0:
+		return
+		
+	# Play bicycle kick animation (360 degrees spin)
+	var spin_dir = -360.0 if sprite.flip_h else 360.0
+	var tween = create_tween()
+	tween.tween_property(sprite, "rotation_degrees", spin_dir, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(sprite, "rotation_degrees", 0.0, 0.0)
+
 	var overlapping = kick_area.get_overlapping_bodies()
 	for body in overlapping:
 		if body is RigidBody2D and body.is_in_group("ball"):
@@ -63,8 +73,9 @@ func kick_ball() -> void:
 			var kick_dir = -1.0 if sprite.flip_h else 1.0
 			var impulse = Vector2(kick_dir * KICK_FORCE_X, KICK_FORCE_Y)
 			body.apply_central_impulse(impulse)
-			# Add a temporary visual velocity flash (optional, feels good!)
+			# Add a temporary visual velocity boost
 			body.linear_velocity += impulse * 0.2
+
 
 func respawn() -> void:
 	global_position = initial_position
