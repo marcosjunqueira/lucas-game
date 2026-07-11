@@ -77,6 +77,7 @@ func _update_timer_ui() -> void:
 func _on_goal_scored(scorer: String) -> void:
 	is_in_round_reset = true
 	SoundManager.play("whistle")
+	SoundManager.play("cheer")
 	
 	# Freeze the ball physics using deferred properties to avoid physics server errors
 	$Ball.set_deferred("freeze", true)
