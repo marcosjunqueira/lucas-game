@@ -77,11 +77,11 @@ func _update_timer_ui() -> void:
 func _on_goal_scored(scorer: String) -> void:
 	is_in_round_reset = true
 	
-	# Freeze the ball physics using Godot's native freeze property
-	$Ball.freeze = true
-	$Ball.linear_velocity = Vector2.ZERO
-	$Ball.angular_velocity = 0.0
-	$Ball.global_position = ball_start_pos
+	# Freeze the ball physics using deferred properties to avoid physics server errors
+	$Ball.set_deferred("freeze", true)
+	$Ball.set_deferred("linear_velocity", Vector2.ZERO)
+	$Ball.set_deferred("angular_velocity", 0.0)
+	$Ball.set_deferred("global_position", ball_start_pos)
 	
 	# Freeze player and opponent
 	$Player.process_mode = Node.PROCESS_MODE_DISABLED
