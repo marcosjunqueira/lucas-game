@@ -7,11 +7,19 @@ const KICK_FORCE_X = 350.0
 const KICK_FORCE_Y = -250.0
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var initial_position := Vector2.ZERO
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var kick_area: Area2D = $KickArea
 
+func _ready() -> void:
+	initial_position = global_position
+
 func _physics_process(delta: float) -> void:
+	# Respawn if player falls into a pit
+	if global_position.y > 750:
+		respawn()
+
 	# Add gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -57,3 +65,8 @@ func kick_ball() -> void:
 			body.apply_central_impulse(impulse)
 			# Add a temporary visual velocity flash (optional, feels good!)
 			body.linear_velocity += impulse * 0.2
+
+func respawn() -> void:
+	global_position = initial_position
+	velocity = Vector2.ZERO
+
