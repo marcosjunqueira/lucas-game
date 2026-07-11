@@ -77,6 +77,11 @@ func _update_timer_ui() -> void:
 func _on_goal_scored(scorer: String) -> void:
 	is_in_round_reset = true
 	
+	# Move the ball to the center immediately to prevent double detection inside the goal
+	$Ball.global_position = ball_start_pos
+	$Ball.linear_velocity = Vector2.ZERO
+	$Ball.angular_velocity = 0.0
+	
 	# Freeze physics
 	$Player.process_mode = Node.PROCESS_MODE_DISABLED
 	$Ball.process_mode = Node.PROCESS_MODE_DISABLED
