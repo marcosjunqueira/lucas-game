@@ -76,6 +76,7 @@ func _update_timer_ui() -> void:
 
 func _on_goal_scored(scorer: String) -> void:
 	is_in_round_reset = true
+	SoundManager.play("whistle")
 	
 	# Freeze the ball physics using deferred properties to avoid physics server errors
 	$Ball.set_deferred("freeze", true)
@@ -97,6 +98,8 @@ func _on_goal_scored(scorer: String) -> void:
 	goal_banner.visible = true
 	if scorer == "CR7":
 		goal_banner_label.text = "GOOOL DO CR7!!!\nSIUUUUUUU!"
+		# Delay SIUUU slightly to align with T-Rex jumping up
+		get_tree().create_timer(0.15).timeout.connect(func(): SoundManager.play("siuuu"))
 		
 		# Animate T-Rex
 		trex.global_position = Vector2(576, 324)
@@ -148,6 +151,11 @@ func _on_goal_scored(scorer: String) -> void:
 
 func _on_match_ended(winner: String, p_score: int, o_score: int) -> void:
 	win_overlay.visible = true
+	
+	# Play triple whistle for full time (short, short, long)
+	SoundManager.play("whistle")
+	get_tree().create_timer(0.2).timeout.connect(func(): SoundManager.play("whistle"))
+	get_tree().create_timer(0.45).timeout.connect(func(): SoundManager.play("whistle"))
 	
 	# Freeze all
 	$Player.process_mode = Node.PROCESS_MODE_DISABLED

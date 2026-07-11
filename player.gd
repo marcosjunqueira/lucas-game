@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	var wants_jump = Input.is_action_just_pressed("ui_up") or Input.is_key_pressed(KEY_W)
 	if wants_jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		SoundManager.play("jump")
 
 	# Handle Horizontal Movement (A/D, Left/Right Arrows, or Gamepad)
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -59,6 +60,8 @@ func kick_ball() -> void:
 	# Prevent spamming spins while already spinning
 	if sprite.rotation != 0.0:
 		return
+		
+	SoundManager.play("kick")
 		
 	var ball: RigidBody2D = null
 	var overlapping = kick_area.get_overlapping_bodies()
