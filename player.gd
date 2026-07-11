@@ -60,21 +60,37 @@ func kick_ball() -> void:
 	if sprite.rotation != 0.0:
 		return
 		
-	# Play bicycle kick animation (360 degrees spin)
-	var spin_dir = -360.0 if sprite.flip_h else 360.0
-	var tween = create_tween()
-	tween.tween_property(sprite, "rotation_degrees", spin_dir, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tween.tween_property(sprite, "rotation_degrees", 0.0, 0.0)
-
+	var ball: RigidBody2D = null
 	var overlapping = kick_area.get_overlapping_bodies()
 	for body in overlapping:
 		if body is RigidBody2D and body.is_in_group("ball"):
-			# Kick direction matches the facing direction of CR7
-			var kick_dir = -1.0 if sprite.flip_h else 1.0
-			var impulse = Vector2(kick_dir * KICK_FORCE_X, KICK_FORCE_Y)
-			body.apply_central_impulse(impulse)
-			# Add a temporary visual velocity boost
-			body.linear_velocity += impulse * 0.2
+			ball = body
+			break
+
+	var kick_dir = -1.0 if sprite.flip_h else 1.0
+	
+	# Play bicycle kick backflip animation (spin backwards)
+	# Facing right (flip_h=false) -> spin counter-clockwise (-360)
+	# Facing left (flip_h=true) -> spin clockwise (360)
+	var spin_dir = 360.0 if sprite.flip_h else -360.0
+	var tween = create_tween()
+	tween.tween_property(sprite, "rotation_degrees", spin_dir, 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(sprite, "rotation_degrees", 0.0, 0.0)
+
+	if ball:
+		# 1. Pop the ball straight up and slightly back
+		ball.linear_velocity = Vector2(kick_dir * 40.0, -380.0)
+		
+		# 2. Player leaps up towards the ball
+		velocity.y = JUMP_VELOCITY * 1.15
+		
+		# 3. Wait a short moment (0.18s) for player to reach upside-down stance in the air
+		await get_tree().create_timer(0.18).timeout
+		
+		# 4. Final kick: launch the ball high over the opponent into the net
+		if is_instance_valid(ball):
+			ball.linear_velocity = Vector2(kick_dir * 580.0, -380.0)
+
 
 
 func respawn() -> void:
