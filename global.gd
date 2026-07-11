@@ -1,7 +1,7 @@
 extends Node
 
 signal score_changed(new_score: int)
-signal game_won
+signal game_over(winner: String)
 
 var fossils_collected := 0:
 	set(val):

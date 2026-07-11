@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 	# Connect signals
 	Global.score_changed.connect(_on_score_changed)
-	Global.game_won.connect(_on_game_won)
+	Global.game_over.connect(_on_game_over)
 	restart_button.pressed.connect(_on_restart_pressed)
 	
 	# Initialize visual states
@@ -31,9 +31,12 @@ func _on_score_changed(_new_score: int) -> void:
 func _update_fossil_ui() -> void:
 	fossil_label.text = "Fossils: %d / %d" % [Global.fossils_collected, Global.total_fossils_in_level]
 
-func _on_game_won() -> void:
+func _on_game_over(winner: String) -> void:
 	win_overlay.visible = true
-	win_label.text = "GOOOOL!!!\nSIUUUUUUU!\n\nYou collected %d of %d fossils!" % [Global.fossils_collected, Global.total_fossils_in_level]
+	if winner == "CR7":
+		win_label.text = "GOOOOL DO CR7!!!\nSIUUUUUUU!\n\nYou collected %d of %d fossils!" % [Global.fossils_collected, Global.total_fossils_in_level]
+	else:
+		win_label.text = "GOL DO DINOSSAURO!\nVocê Perdeu!\n\nYou collected %d of %d fossils!" % [Global.fossils_collected, Global.total_fossils_in_level]
 	
 	# Freeze player, ball, and opponent so they don't slide or glitch after winning
 	$Player.process_mode = Node.PROCESS_MODE_DISABLED

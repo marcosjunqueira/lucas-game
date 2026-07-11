@@ -5,8 +5,11 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ball"):
-		# Soccer goal scored!
+		# Goal scored! Deactivate further detections
 		set_deferred("monitoring", false)
 		
-		# Emit the global game won signal
-		Global.game_won.emit()
+		# Check name to determine which side scored
+		if name.to_lower().contains("left"):
+			Global.game_over.emit("Dinosaur")
+		else:
+			Global.game_over.emit("CR7")

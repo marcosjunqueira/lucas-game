@@ -5,8 +5,8 @@ const DETECT_RADIUS = 350.0
 const PUSH_FORCE = 70.0
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-var patrol_left := 1400.0
-var patrol_right := 1780.0
+var patrol_left := 400.0
+var patrol_right := 1050.0
 var patrol_dir := -1
 
 @onready var sprite: Sprite2D = $Sprite2D
